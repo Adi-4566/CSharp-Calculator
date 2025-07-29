@@ -13,12 +13,13 @@ namespace CalculatorProgram
             double num2;
             double answer;
 
-            Console.WriteLine("==================================");
-            Console.WriteLine("\n\tCALCULATOR PROGRAM\n");
-            Console.WriteLine("==================================");
-
             while (yes)
             {
+                Console.Clear();
+                Console.WriteLine("==================================");
+                Console.WriteLine("\n\tCALCULATOR PROGRAM\n");
+                Console.WriteLine("==================================");
+
                 Console.WriteLine("\nChoose a operation you want to use : \n");
                 Console.WriteLine("\tType (+) for ADDITION");
                 Console.WriteLine("\tType (-) for SUBTRACTION");
@@ -73,7 +74,7 @@ namespace CalculatorProgram
 
                 Console.Write("\nEnter the first operand : ");
                 num1 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("\nEnter the second operand : ");
+                Console.Write("Enter the second operand : ");
                 num2 = Convert.ToDouble(Console.ReadLine());
 
                 switch (operation)
@@ -106,24 +107,18 @@ namespace CalculatorProgram
                         Console.WriteLine("\nThe aswer is " + answer);
                         break;
                 }
-
-                Console.WriteLine("\nPress (Y) if you want solve more");
-                Console.WriteLine("Press (N) if you want to stop");
-                Console.Write("You select : ");
-                selection = Console.ReadLine();
-                selection = selection.ToUpper();
-
-                if(selection == "Y")
+                do
                 {
-                    yes = true;
-                }
-                else if (selection == "N")
-                {
-                    yes = false;
-                }
+                    Console.WriteLine("\nPress (Y) if you want solve more");
+                    Console.WriteLine("Press (N) if you want to stop");
+                    Console.Write("You select : ");
+                    selection = Console.ReadLine().ToUpper();
+                    yes = (selection == "Y");
+
+                } while (selection != "Y" && selection != "N");
             }
 
-            Console.WriteLine("\nTHANK YOUU FOR USING MY CALCULATOR!");
+            Console.WriteLine("\nThank you for using the calculator!");
 
             Console.ReadKey();
         }
