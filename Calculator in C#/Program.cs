@@ -73,12 +73,18 @@ namespace CalculatorProgram
                 }
 
                 Console.Write("\nEnter the first operand : ");
-                num1 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Enter the second operand : ");
-                num2 = Convert.ToDouble(Console.ReadLine());
-
-                switch (operation)
+                while(!double.TryParse(Console.ReadLine(), out num1))
                 {
+                    Console.WriteLine("Invalid number. Enter a valid number : ");
+                }
+                Console.Write("Enter the second operand : ");
+                while (!double.TryParse(Console.ReadLine(), out num2))
+                {
+                    Console.WriteLine("Invalid number. Enter a valid number : ");
+                }
+
+                    switch (operation)
+                    {
                     case '+':
                         answer = num1 + num2;
                         Console.WriteLine(num1 + " + " + num2 + " = " + answer);
@@ -96,17 +102,20 @@ namespace CalculatorProgram
                         break;
                     case '/':
                         answer = num1 / num2;
-                        if (num2 == 0)
+                        while (num2 == 0)
                         {
-                            Console.WriteLine("\nI can't divide by zero\n");
-                            Console.Write("Please enter a number other than zero : ");
-                            num2 = Convert.ToDouble(Console.ReadLine());
+                            Console.WriteLine("cannot divide by zero!");
+                            Console.Write("\nEnter the second operand : ");
+                            while (!double.TryParse(Console.ReadLine(), out num2))
+                            {
+                                Console.Write("Invalid input. Enter a valid number : ");
+                            }
                             answer = num1 / num2;
                         }
                         Console.WriteLine(num1 + " / " + num2 + " = " + answer);
-                        Console.WriteLine("\nThe aswer is " + answer);
+                        Console.WriteLine("\nThe answer is " + answer);
                         break;
-                }
+                    }
                 do
                 {
                     Console.WriteLine("\nPress (Y) if you want solve more");
